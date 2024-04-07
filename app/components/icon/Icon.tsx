@@ -4,25 +4,16 @@ import { iconColletion } from "@/lib/iconCollection";
 type IconProps = {
   iconName: keyof typeof iconColletion;
   width?: number;
-  heigth?: number;
+  height?: number;
   className?: string;
 };
 
 const Icon = (props: IconProps) => {
-  const IconComponent = iconColletion[props.iconName];
+  const { iconName, width = 25, height = 25, className = "" } = props;
 
-  const widthProps = props.width ?? 50;
-  const heigthProps = props.heigth ?? 50;
+  const IconComponent = iconColletion[iconName];
 
-  const additionalClasses = props.className ?? "";
-
-  return (
-    <IconComponent
-      width={widthProps}
-      height={heigthProps}
-      className={additionalClasses}
-    />
-  );
+  return <IconComponent width={width} height={height} className={className} />;
 };
 
 export default Icon;
