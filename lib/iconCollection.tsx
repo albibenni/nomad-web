@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
 
-export const iconColletion = {
+export const iconCollection = {
   airplay: (attrs: ComponentProps<"svg">) => (
     <svg {...attrs} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -5032,3 +5032,5 @@ export const iconColletion = {
     </svg>
   ),
 };
+
+export type IconName = keyof typeof iconCollection;

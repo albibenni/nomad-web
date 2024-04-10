@@ -1,8 +1,8 @@
 import React from "react";
-import { iconColletion } from "@/lib/iconCollection";
+import { IconName, iconCollection } from "@/lib/iconCollection";
 
 type IconProps = {
-  iconName: keyof typeof iconColletion;
+  iconName: IconName;
   width?: number;
   height?: number;
   className?: string;
@@ -11,7 +11,7 @@ type IconProps = {
 const Icon = (props: IconProps) => {
   const { iconName, width = 25, height = 25, className = "" } = props;
 
-  const IconComponent = iconColletion[iconName];
+  const IconComponent = iconCollection[iconName];
 
   return <IconComponent width={width} height={height} className={className} />;
 };
