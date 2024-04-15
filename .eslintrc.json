@@ -1,7 +1,6 @@
 {
   "extends": ["next", "prettier"],
   "rules": {
-    "semi": "error",
-    "indent": ["error", 2]
+    "semi": "error"
   }
 }
