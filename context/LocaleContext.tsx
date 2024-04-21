@@ -4,23 +4,26 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { Locale, i18n } from "@/i18n.config";
 import { getDictionary } from "@/lib/dictionary";
 
+// TODO: (Vittorio) da definire il tipo del dizionario
+type Dictionary = Record<string, any>;
+
 type LocaleContextProviderProps = {
     children: React.ReactNode;
     lang: Locale;
+    dictionary: Dictionary;
 };
 
 type LocaleContext = {
     lang: Locale;
-    // TODO: (Vittorio) da definire il tipo del dizionario
-    dictionary: Record<string, any>;
+    dictionary: Dictionary;
     changeLanguage: (lang: Locale) => void;
 };
 
 const LocaleContext = createContext<LocaleContext | null>(null);
 
-export const LocaleProvider = ({ children, lang: initialLang }: LocaleContextProviderProps) => {
+export const LocaleProvider = ({ children, lang: initialLang, dictionary: initialDictionary }: LocaleContextProviderProps) => {
     const [lang, setLang] = useState<Locale>(initialLang || i18n.defaultLocale);
-    const [dictionary, setDictionary] = useState<Record<string, any>>({});
+    const [dictionary, setDictionary] = useState<Dictionary>(initialDictionary || {});
 
     const fetchDictionary = async (lang: Locale) => {
         const dictionaryData = await getDictionary(lang);
