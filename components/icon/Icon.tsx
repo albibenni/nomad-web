@@ -1,5 +1,5 @@
 import React from "react";
-import { IconName, iconCollection } from "@/lib/iconCollection";
+import { IconName, iconCollection } from "./iconCollection";
 
 type IconProps = {
   iconName: IconName;
