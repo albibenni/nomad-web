@@ -6,6 +6,7 @@ import { getDictionary } from "@/lib/dictionary";
 
 type LocaleContextProviderProps = {
     children: React.ReactNode;
+    lang: Locale;
 };
 
 type LocaleContext = {
@@ -17,8 +18,8 @@ type LocaleContext = {
 
 const LocaleContext = createContext<LocaleContext | null>(null);
 
-export const LocaleProvider = ({ children }: LocaleContextProviderProps) => {
-    const [lang, setLang] = useState<Locale>(i18n.defaultLocale);
+export const LocaleProvider = ({ children, lang: initialLang }: LocaleContextProviderProps) => {
+    const [lang, setLang] = useState<Locale>(initialLang || i18n.defaultLocale);
     const [dictionary, setDictionary] = useState<Record<string, any>>({});
 
     const fetchDictionary = async (lang: Locale) => {

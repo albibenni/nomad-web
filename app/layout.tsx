@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html>
       <body className={inter.className}>
-        <LocaleProvider>
+        <LocaleProvider lang={params.lang}>
           <Header />
           <main lang={params.lang}>{children}</main>
         </LocaleProvider>

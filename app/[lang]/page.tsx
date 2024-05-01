@@ -4,8 +4,9 @@ import { Locale } from "@/i18n.config";
 import Image from "next/image";
 // import { getDictionary } from "@/lib/dictionary";
 import { useLocaleContext } from "@/context/LocaleContext";
-import { useEffect } from "react";
 
+// Nel server component il parametro lang non serve passarlo come props
+// in questo serve a titolo dimostrativo
 export default function Home({
     params: { lang },
 }: {
@@ -13,14 +14,7 @@ export default function Home({
 }) {
     // const { page } = await getDictionary(lang);
 
-    const { changeLanguage, dictionary } = useLocaleContext();
-
-    useEffect(() => {
-        changeLanguage(lang);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [lang]);
-
-    const { page } = dictionary;
+    const { dictionary: { page } } = useLocaleContext();
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
