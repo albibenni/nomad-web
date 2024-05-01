@@ -1,13 +1,26 @@
+"use client";
+
 import { Locale } from "@/i18n.config";
 import Image from "next/image";
-import { getDictionary } from "@/lib/dictionary";
+// import { getDictionary } from "@/lib/dictionary";
+import { useLocaleContext } from "@/context/LocaleContext";
+import { useEffect } from "react";
 
-export default async function Home({
+export default function Home({
     params: { lang },
 }: {
     params: { lang: Locale };
 }) {
-    const { page } = await getDictionary(lang);
+    // const { page } = await getDictionary(lang);
+
+    const { changeLanguage, dictionary } = useLocaleContext();
+
+    useEffect(() => {
+        changeLanguage(lang);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [lang]);
+
+    const { page } = dictionary;
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -38,13 +51,13 @@ export default async function Home({
                     rel="noopener noreferrer"
                 >
                     <h2 className={`mb-3 text-2xl font-semibold`}>
-                        {page.card1.title}{" "}
+                        {page?.card1.title}{" "}
                         <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
                             -&gt;
                         </span>
                     </h2>
                     <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-                        {page.card1.content}
+                        {page?.card1.content}
                     </p>
                 </a>
 
@@ -55,13 +68,13 @@ export default async function Home({
                     rel="noopener noreferrer"
                 >
                     <h2 className={`mb-3 text-2xl font-semibold`}>
-                        {page.card2.title}{" "}
+                        {page?.card2.title}{" "}
                         <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
                             -&gt;
                         </span>
                     </h2>
                     <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-                        {page.card2.content}
+                        {page?.card2.content}
                     </p>
                 </a>
 
@@ -72,13 +85,13 @@ export default async function Home({
                     rel="noopener noreferrer"
                 >
                     <h2 className={`mb-3 text-2xl font-semibold`}>
-                        {page.card3.title}{" "}
+                        {page?.card3.title}{" "}
                         <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
                             -&gt;
                         </span>
                     </h2>
                     <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-                        {page.card3.content}
+                        {page?.card3.content}
                     </p>
                 </a>
 
@@ -89,13 +102,13 @@ export default async function Home({
                     rel="noopener noreferrer"
                 >
                     <h2 className={`mb-3 text-2xl font-semibold`}>
-                        {page.card4.title}{" "}
+                        {page?.card4.title}{" "}
                         <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
                             -&gt;
                         </span>
                     </h2>
                     <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-                        {page.card4.content}
+                        {page?.card4.content}
                     </p>
                 </a>
             </div>

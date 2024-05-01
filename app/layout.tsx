@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Locale, i18n } from "@/i18n.config";
 import Header from "@/components/Header";
+import { LocaleProvider } from "@/context/LocaleContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,10 +24,12 @@ export default function RootLayout({
   params: { lang: Locale };
 }) {
   return (
-    <html lang={params.lang}>
+    <html>
       <body className={inter.className}>
-        <Header />
-        <main lang={params.lang}>{children}</main>
+        <LocaleProvider>
+          <Header />
+          <main lang={params.lang}>{children}</main>
+        </LocaleProvider>
       </body>
     </html>
   );
