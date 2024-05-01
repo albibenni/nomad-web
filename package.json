@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --check --ignore-path .gitignore .",
+    "format": "prettier --check .",
     "format:fix": "prettier --write --ignore-path .gitignore .",
     "prepare": "husky",
     "drizzle:generate": "drizzle-kit generate:pg",
